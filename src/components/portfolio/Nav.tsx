@@ -50,9 +50,17 @@ export function Nav() {
               </motion.div>
             </div>
           </div>
-          
           {/* SPHERICAL REFRACTION LIGHTING ILLUSION */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
+
+          {/* HIGH EDGE REFRACTION / DISTORTION */}
+          <div 
+            className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-xl backdrop-saturate-200"
+            style={{
+              WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 50%, black 100%)',
+              maskImage: 'radial-gradient(ellipse at center, transparent 50%, black 100%)'
+            }}
+          ></div>
         </div>
 
         <a href="#" className="rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-125 hover:bg-white/10 hover:shadow-lg origin-bottom">
