@@ -16,22 +16,21 @@ export function LiquidBackground() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      style={{ background: "#000" }}
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background"
     >
       {/* Flame photo — rotated to landscape orientation, covers viewport */}
       <div className="absolute inset-0">
         <img
           src={bgFlame.url}
           alt=""
-          className="absolute left-1/2 top-1/2 h-[140vmax] w-[140vmax] max-w-none -translate-x-1/2 -translate-y-1/2 rotate-90 object-cover"
+          className="absolute left-1/2 top-1/2 h-[140vmax] w-[140vmax] max-w-none -translate-x-1/2 -translate-y-1/2 rotate-90 object-cover opacity-60 dark:opacity-100"
         />
         {/* Darkening + warmth balance so glass panels stay legible */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.65) 100%)",
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-background) 55%, transparent) 0%, color-mix(in srgb, var(--color-background) 35%, transparent) 40%, color-mix(in srgb, var(--color-background) 65%, transparent) 100%)",
           }}
         />
       </div>
@@ -51,11 +50,11 @@ export function LiquidBackground() {
           className="absolute -left-[6%] top-[6%] whitespace-nowrap text-[14vw] font-black uppercase leading-none tracking-tighter animate-drift-slow"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.01) 100%)",
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-foreground) 9%, transparent) 0%, color-mix(in srgb, var(--color-foreground) 1%, transparent) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.06)",
+            WebkitTextStroke: "1px color-mix(in srgb, var(--color-foreground) 6%, transparent)",
           }}
         >
           RELENTLESS
@@ -64,11 +63,11 @@ export function LiquidBackground() {
           className="absolute -right-[4%] top-[40%] whitespace-nowrap text-[12vw] font-black uppercase leading-none tracking-tighter animate-drift"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%)",
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-foreground) 8%, transparent) 0%, color-mix(in srgb, var(--color-foreground) 1%, transparent) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.05)",
+            WebkitTextStroke: "1px color-mix(in srgb, var(--color-foreground) 5%, transparent)",
           }}
         >
           NO&nbsp;LIMITS
@@ -77,11 +76,11 @@ export function LiquidBackground() {
           className="absolute left-[2%] bottom-[6%] whitespace-nowrap text-[13vw] font-black uppercase leading-none tracking-tighter animate-drift-slow"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.01) 100%)",
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-foreground) 7%, transparent) 0%, color-mix(in srgb, var(--color-foreground) 1%, transparent) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.05)",
+            WebkitTextStroke: "1px color-mix(in srgb, var(--color-foreground) 5%, transparent)",
           }}
         >
           BUILT · NOT BORN
@@ -94,7 +93,7 @@ export function LiquidBackground() {
           return (
             <span
               key={m}
-              className="absolute select-none text-[11px] uppercase tracking-[0.35em] text-white/[0.07]"
+              className="absolute select-none text-[11px] uppercase tracking-[0.35em] text-foreground/10"
               style={{ top: `${top}%`, left: `${left}%` }}
             >
               {m}
@@ -107,14 +106,14 @@ export function LiquidBackground() {
           className="absolute inset-x-0 top-1/3 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-foreground) 8%, transparent) 50%, transparent 100%)",
           }}
         />
         <div
           className="absolute inset-x-0 top-2/3 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-foreground) 6%, transparent) 50%, transparent 100%)",
           }}
         />
       </div>
@@ -124,28 +123,28 @@ export function LiquidBackground() {
         className="absolute top-[-15%] left-[-10%] h-[60vmax] w-[60vmax] rounded-full blur-3xl animate-blob-a"
         style={{
           background:
-            "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), rgba(255,255,255,0.02) 60%, transparent 70%)",
+            "radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-primary) 22%, transparent), color-mix(in srgb, var(--color-primary) 2%, transparent) 60%, transparent 70%)",
         }}
       />
       <motion.div
         className="absolute bottom-[-20%] right-[-15%] h-[70vmax] w-[70vmax] rounded-full blur-3xl animate-blob-b"
         style={{
           background:
-            "radial-gradient(circle at 60% 40%, rgba(220,220,220,0.18), rgba(26,26,26,0.05) 55%, transparent 70%)",
+            "radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--color-primary) 18%, transparent), color-mix(in srgb, var(--color-foreground) 5%, transparent) 55%, transparent 70%)",
         }}
       />
       <motion.div
         className="absolute top-[30%] left-[30%] h-[50vmax] w-[50vmax] rounded-full blur-3xl animate-blob-c"
         style={{
-          background: "radial-gradient(circle at 40% 60%, rgba(255,255,255,0.14), transparent 65%)",
+          background: "radial-gradient(circle at 40% 60%, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 65%)",
         }}
       />
 
       {/* Vignette */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.75) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 50%, color-mix(in srgb, var(--color-background) 85%, transparent) 100%)",
         }}
       />
     </div>
