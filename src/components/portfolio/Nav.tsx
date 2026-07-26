@@ -7,15 +7,17 @@ export function Nav() {
   const [clonedContent, setClonedContent] = useState("");
 
   useEffect(() => {
-    // Advanced DOM clone hack to physically magnify the background content
-    const sourceContent = document.getElementById("magnify-content");
-    if (sourceContent) {
-      const clone = sourceContent.cloneNode(true) as HTMLElement;
-      // Strip IDs to prevent breaking internal anchor links
-      const elementsWithIds = clone.querySelectorAll("[id]");
-      elementsWithIds.forEach((el) => el.removeAttribute("id"));
-      setClonedContent(clone.innerHTML);
-    }
+    // Wait for the DOM to fully render the magnify-content div
+    const timer = setTimeout(() => {
+      const sourceContent = document.getElementById("magnify-content");
+      if (sourceContent) {
+        const clone = sourceContent.cloneNode(true) as HTMLElement;
+        const elementsWithIds = clone.querySelectorAll("[id]");
+        elementsWithIds.forEach((el) => el.removeAttribute("id"));
+        setClonedContent(clone.innerHTML);
+      }
+    }, 500); // 500ms delay ensures children are mounted
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -32,7 +34,7 @@ export function Nav() {
           {/* Map to physical screen coordinates */}
           <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
             {/* Scale/Lens effect originating from the center of the nav bar */}
-            <div className="w-full h-full origin-[50%_40px] scale-[1.2] blur-[4px] opacity-60">
+            <div className="w-full h-full origin-[50%_40px] scale-[1.5] blur-[4px] opacity-60">
               {/* Sync with page scroll */}
               <motion.div style={{ y: yOffset }}>
                 <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
