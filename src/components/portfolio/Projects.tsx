@@ -35,12 +35,12 @@ export function Projects() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/50">Selected Work</p>
-            <h2 className="text-shadow-soft mt-2 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Selected Work</p>
+            <h2 className="text-shadow-soft mt-2 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Projects
             </h2>
           </div>
-          <p className="hidden max-w-xs text-sm text-white/60 md:block">
+          <p className="hidden max-w-xs text-sm text-foreground/60 md:block">
             Research, production systems, and social-impact applications.
           </p>
         </div>
@@ -60,26 +60,26 @@ export function Projects() {
                 <GlassCard className="flex h-full min-h-[280px] flex-col">
                   <div className="mb-6 flex items-center justify-between">
                     <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
-                      <Icon className="h-5 w-5 text-white" />
+                      <Icon className="h-5 w-5 text-foreground" />
                     </div>
-                    <span className="liquid-glass-light rounded-full px-2.5 py-1 text-[10px] uppercase tracking-widest text-white/80">
+                    <span className="liquid-glass-light rounded-full px-2.5 py-1 text-[10px] uppercase tracking-widest text-foreground/80">
                       {p.tag}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">{p.description}</p>
+                  <h3 className="text-xl font-semibold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70">{p.description}</p>
                   <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
                     <div className="flex flex-wrap gap-1.5">
                       {p.meta.map((m) => (
                         <span
                           key={m}
-                          className="liquid-glass-light rounded-full px-2 py-0.5 text-[10px] text-white/80"
+                          className="liquid-glass-light rounded-full px-2 py-0.5 text-[10px] text-foreground/80"
                         >
                           {m}
                         </span>
                       ))}
                     </div>
-                    <ExternalLink className="h-4 w-4 text-white/40" />
+                    <ExternalLink className="h-4 w-4 text-foreground/40" />
                   </div>
                 </GlassCard>
               </motion.div>

@@ -96,7 +96,7 @@ export function Nav() {
           </div>
           
           {/* SPHERICAL REFRACTION LIGHTING ILLUSION */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.05)_100%)] shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] dark:bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] dark:shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
 
           {/* HIGH EDGE REFRACTION / SPHERICAL PRISM DISTORTION */}
           <div 

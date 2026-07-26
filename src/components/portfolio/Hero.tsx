@@ -8,7 +8,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="liquid-glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs tracking-wide text-white/80"
+        className="liquid-glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs tracking-wide text-foreground/80"
       >
         <Sparkles className="h-3.5 w-3.5" />
         Full-Stack Developer · Security Enthusiast
@@ -18,7 +18,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="text-shadow-soft bg-gradient-to-b from-white to-white/60 bg-clip-text text-6xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-8xl"
+        className="text-shadow-soft bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-6xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-8xl"
       >
         Rakshit Awati
       </motion.h1>
@@ -27,7 +27,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="text-shadow-soft mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg"
+        className="text-shadow-soft mt-6 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg"
       >
         Building high-performance web applications and secure systems.
       </motion.p>
@@ -40,9 +40,9 @@ export function Hero() {
       >
         <motion.a
           href="#work"
-          whileHover={{ scale: 1.04, backgroundColor: "rgba(255,255,255,0.12)" }}
+          whileHover={{ scale: 1.04, backgroundColor: "color-mix(in srgb, var(--color-foreground) 12%, transparent)" }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white"
+          className="liquid-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground"
         >
           Explore Work
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -51,7 +51,7 @@ export function Hero() {
           href="#about"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass-light inline-flex items-center rounded-full px-6 py-3 text-sm font-medium text-white/85 hover:text-white"
+          className="liquid-glass-light inline-flex items-center rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
         >
           About Me
         </motion.a>
