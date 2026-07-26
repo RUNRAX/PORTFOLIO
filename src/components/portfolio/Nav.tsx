@@ -12,8 +12,17 @@ export function Nav() {
       const sourceContent = document.getElementById("magnify-content");
       if (sourceContent) {
         const clone = sourceContent.cloneNode(true) as HTMLElement;
-        const elementsWithIds = clone.querySelectorAll("[id]");
-        elementsWithIds.forEach((el) => el.removeAttribute("id"));
+        const elements = clone.querySelectorAll("*");
+        elements.forEach((el) => {
+          if (el.hasAttribute("id")) {
+            el.removeAttribute("id");
+          }
+          if (el instanceof HTMLElement) {
+            // Force visibility in case framer-motion had opacity: 0 during the clone
+            el.style.opacity = "1";
+            el.style.transform = "none";
+          }
+        });
         setClonedContent(clone.innerHTML);
       }
     }, 500); // 500ms delay ensures children are mounted
