@@ -42,23 +42,23 @@ export function Nav() {
         <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none z-[-1]">
           {/* Map to physical screen coordinates */}
           <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
-            {/* Scale/Lens effect originating exactly from the center of the nav bar (24px top + ~22px half height = 46px) */}
-            <div className="w-full h-full origin-[50%_46px] scale-[2.5] opacity-90">
+            {/* Cylindrical Lens effect: Stretches heavily on the Y-axis like a glass roller */}
+            <div className="w-full h-full origin-[50%_46px] scale-x-[1.3] scale-y-[4] opacity-90">
               {/* Sync with page scroll */}
               <motion.div style={{ y: yOffset }}>
                 <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
               </motion.div>
             </div>
           </div>
-          {/* SPHERICAL REFRACTION LIGHTING ILLUSION */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
+          {/* CYLINDRICAL REFRACTION LIGHTING ILLUSION */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.1)] via-transparent to-[rgba(0,0,0,0.6)] shadow-[inset_0_8px_16px_rgba(255,255,255,0.1),inset_0_-12px_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
 
           {/* HIGH EDGE REFRACTION / DISTORTION */}
           <div 
-            className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-xl backdrop-saturate-200"
+            className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-2xl backdrop-saturate-[300%]"
             style={{
-              WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 70%, black 100%)',
-              maskImage: 'radial-gradient(ellipse at center, transparent 70%, black 100%)'
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 20%, transparent 80%, black 100%), linear-gradient(to right, black 0%, transparent 15%, transparent 85%, black 100%)',
+              maskImage: 'linear-gradient(to bottom, black 0%, transparent 20%, transparent 80%, black 100%), linear-gradient(to right, black 0%, transparent 15%, transparent 85%, black 100%)'
             }}
           ></div>
         </div>
