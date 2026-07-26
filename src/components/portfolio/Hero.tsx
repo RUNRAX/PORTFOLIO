@@ -18,7 +18,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="text-shadow-soft bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-6xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-8xl"
+        className="bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-6xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-8xl"
       >
         Rakshit Awati
       </motion.h1>
@@ -27,7 +27,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="text-shadow-soft mt-6 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg"
+        className="mt-6 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg"
       >
         Building high-performance web applications and secure systems.
       </motion.p>

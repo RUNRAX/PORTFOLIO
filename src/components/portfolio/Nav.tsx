@@ -72,10 +72,10 @@ export function Nav() {
           </div>
 
           {/* 2. Top Edge Total Internal Reflection */}
-          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 35%)', maskImage: 'linear-gradient(to bottom, black 0%, transparent 35%)' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 45%)', maskImage: 'linear-gradient(to bottom, black 0%, transparent 45%)' }}>
             <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
               {/* Mathematically flip incoming elements above the nav onto the inside top edge */}
-              <div className="w-full h-full origin-[50%_24px] scale-y-[-1.8] scale-x-[1.8] opacity-100 blur-[8px] saturate-[300%]">
+              <div className="w-full h-full origin-[50%_24px] scale-y-[-2.4] scale-x-[2.4] opacity-100 blur-[8px] saturate-[300%]">
                 <motion.div style={{ y: yOffset }}>
                   <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
                 </motion.div>
@@ -84,10 +84,10 @@ export function Nav() {
           </div>
 
           {/* 3. Bottom Edge Total Internal Reflection */}
-          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 35%)', maskImage: 'linear-gradient(to top, black 0%, transparent 35%)' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 45%)', maskImage: 'linear-gradient(to top, black 0%, transparent 45%)' }}>
             <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
               {/* Mathematically flip incoming elements below the nav onto the inside bottom edge */}
-              <div className="w-full h-full origin-[50%_68px] scale-y-[-1.8] scale-x-[1.8] opacity-100 blur-[8px] saturate-[300%]">
+              <div className="w-full h-full origin-[50%_68px] scale-y-[-2.4] scale-x-[2.4] opacity-100 blur-[8px] saturate-[300%]">
                 <motion.div style={{ y: yOffset }}>
                   <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
                 </motion.div>

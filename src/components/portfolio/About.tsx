@@ -8,7 +8,7 @@ export function About() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">About</p>
-          <h2 className="text-shadow-soft mt-2 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
             Engineer by craft, human by design.
           </h2>
         </div>
