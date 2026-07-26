@@ -37,11 +37,13 @@ function Index() {
     <main className="relative min-h-dvh text-white">
       <LiquidBackground />
       <Nav />
-      <Hero />
-      <TechArsenal />
-      <Projects />
-      <About />
-      <Footer />
+      <div id="magnify-content">
+        <Hero />
+        <TechArsenal />
+        <Projects />
+        <About />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -1,6 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function Nav() {
+  const { scrollY } = useScroll();
+  const yOffset = useTransform(scrollY, (y) => -y);
+  const [clonedContent, setClonedContent] = useState("");
+
+  useEffect(() => {
+    // Advanced DOM clone hack to physically magnify the background content
+    const sourceContent = document.getElementById("magnify-content");
+    if (sourceContent) {
+      const clone = sourceContent.cloneNode(true) as HTMLElement;
+      // Strip IDs to prevent breaking internal anchor links
+      const elementsWithIds = clone.querySelectorAll("[id]");
+      elementsWithIds.forEach((el) => el.removeAttribute("id"));
+      setClonedContent(clone.innerHTML);
+    }
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -12 }}
@@ -9,6 +26,21 @@ export function Nav() {
       className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
     >
       <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-white/5 backdrop-blur-[4px] backdrop-saturate-[250%] backdrop-contrast-125 border border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3)]">
+        
+        {/* MAGNIFYING GLASS DOM HACK */}
+        <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none z-[-1]">
+          {/* Map to physical screen coordinates */}
+          <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
+            {/* Scale/Lens effect originating from the center of the nav bar */}
+            <div className="w-full h-full origin-[50%_40px] scale-[1.2] blur-[4px] opacity-60">
+              {/* Sync with page scroll */}
+              <motion.div style={{ y: yOffset }}>
+                <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
         <a href="#" className="rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-125 hover:bg-white/10 hover:shadow-lg origin-bottom">
           RA
         </a>
