@@ -43,7 +43,7 @@ export function Nav() {
           {/* Map to physical screen coordinates */}
           <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
             {/* Scale/Lens effect originating exactly from the center of the nav bar (24px top + ~22px half height = 46px) */}
-            <div className="w-full h-full origin-[50%_46px] scale-[2] blur-[4px] opacity-90">
+            <div className="w-full h-full origin-[50%_46px] scale-[2.5] opacity-90">
               {/* Sync with page scroll */}
               <motion.div style={{ y: yOffset }}>
                 <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
@@ -57,8 +57,8 @@ export function Nav() {
           <div 
             className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-xl backdrop-saturate-200"
             style={{
-              WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 50%, black 100%)',
-              maskImage: 'radial-gradient(ellipse at center, transparent 50%, black 100%)'
+              WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 70%, black 100%)',
+              maskImage: 'radial-gradient(ellipse at center, transparent 70%, black 100%)'
             }}
           ></div>
         </div>
