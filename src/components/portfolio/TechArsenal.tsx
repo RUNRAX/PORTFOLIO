@@ -24,7 +24,7 @@ export function TechArsenal() {
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
               className="group flex items-center gap-2 rounded-full px-3 py-1.5 text-sm text-foreground/85 hover:bg-foreground/10 cursor-pointer"
             >
-              <span className="text-base leading-none grayscale transition-all duration-300 group-hover:grayscale-0">{t.glyph}</span>
+              <span className="text-base leading-none transition-all duration-300">{t.glyph}</span>
               <span className="hidden sm:inline">{t.name}</span>
             </motion.div>
           ))}

@@ -36,7 +36,7 @@ export function Projects() {
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Selected Work</p>
-            <h2 className="text-shadow-soft mt-2 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+            <h2 className="mt-2 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Projects
             </h2>
           </div>
