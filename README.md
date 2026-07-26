@@ -1,29 +1,34 @@
-# Welcome to your Lovable project
+# Rakshit Awati - Portfolio
 
-This project was built with [Lovable](https://lovable.dev).
+Personal portfolio for Rakshit Awati, showcasing selected works in full-stack development, security research, and social-impact software.
 
-## Build with Lovable
+## Tech Stack
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+This project is built with:
+- **Framework**: [TanStack Start](https://tanstack.com/start) / React 19
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [Lenis](https://lenis.darkroom.engineering/) for smooth scrolling
+- **Language**: TypeScript
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+To run this project locally, ensure you have Node.js installed, then:
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
 ```
 
-## Built with
+## Build
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+```bash
+# Build the production application
+npm run build
+```
+
+## License
+
+MIT

@@ -137,8 +137,7 @@ export function LiquidBackground() {
       <motion.div
         className="absolute top-[30%] left-[30%] h-[50vmax] w-[50vmax] rounded-full blur-3xl animate-blob-c"
         style={{
-          background:
-            "radial-gradient(circle at 40% 60%, rgba(255,255,255,0.14), transparent 65%)",
+          background: "radial-gradient(circle at 40% 60%, rgba(255,255,255,0.14), transparent 65%)",
         }}
       />
 
@@ -146,8 +145,7 @@ export function LiquidBackground() {
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.75) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.75) 100%)",
         }}
       />
     </div>

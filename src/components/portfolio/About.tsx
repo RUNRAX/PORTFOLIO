@@ -77,9 +77,9 @@ export function About() {
                 When I step away from the keyboard, I explore color and texture through{" "}
                 <span className="text-white">spot painting</span> and{" "}
                 <span className="text-white">paper crafting</span>, and I{" "}
-                <span className="text-white">sing</span> whenever the room lets me. I&apos;m also
-                a curious eater — collecting recipes and flavors from cuisines I&apos;ve never
-                cooked before.
+                <span className="text-white">sing</span> whenever the room lets me. I&apos;m also a
+                curious eater — collecting recipes and flavors from cuisines I&apos;ve never cooked
+                before.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-3">
                 {[

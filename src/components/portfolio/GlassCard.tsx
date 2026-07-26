@@ -8,12 +8,7 @@ type GlassCardProps = HTMLMotionProps<"div"> & {
   interactive?: boolean;
 };
 
-export function GlassCard({
-  children,
-  className,
-  interactive = true,
-  ...rest
-}: GlassCardProps) {
+export function GlassCard({ children, className, interactive = true, ...rest }: GlassCardProps) {
   return (
     <motion.div
       whileHover={
