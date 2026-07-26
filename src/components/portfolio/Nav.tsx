@@ -40,7 +40,8 @@ export function Nav() {
         
         {/* MAGNIFYING GLASS DOM HACK */}
         <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none z-[-1]">
-          {/* Map to physical screen coordinates */}
+          
+          {/* 1. Main Center Magnification */}
           <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
             {/* Scale/Lens effect originating exactly from the center of the nav bar (24px top + ~22px half height = 46px) */}
             <div className="w-full h-full origin-[50%_46px] scale-[2.5] opacity-90">
@@ -48,6 +49,30 @@ export function Nav() {
               <motion.div style={{ y: yOffset }}>
                 <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
               </motion.div>
+            </div>
+          </div>
+
+          {/* 2. Top Edge Total Internal Reflection */}
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 25%)', maskImage: 'linear-gradient(to bottom, black 0%, transparent 25%)' }}>
+            <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
+              {/* Mathematically flip incoming elements above the nav onto the inside top edge */}
+              <div className="w-full h-full origin-[50%_24px] scale-y-[-1.5] scale-x-[1.5] opacity-70 blur-[3px]">
+                <motion.div style={{ y: yOffset }}>
+                  <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Bottom Edge Total Internal Reflection */}
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 25%)', maskImage: 'linear-gradient(to top, black 0%, transparent 25%)' }}>
+            <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
+              {/* Mathematically flip incoming elements below the nav onto the inside bottom edge */}
+              <div className="w-full h-full origin-[50%_68px] scale-y-[-1.5] scale-x-[1.5] opacity-70 blur-[3px]">
+                <motion.div style={{ y: yOffset }}>
+                  <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
+                </motion.div>
+              </div>
             </div>
           </div>
           
