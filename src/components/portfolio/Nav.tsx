@@ -52,7 +52,7 @@ export function Nav() {
           </div>
           
           {/* SPHERICAL REFRACTION LIGHTING ILLUSION */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.3)_0%,_rgba(0,0,0,0.4)_100%)] mix-blend-hard-light shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none"></div>
         </div>
 
         <a href="#" className="rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-125 hover:bg-white/10 hover:shadow-lg origin-bottom">
