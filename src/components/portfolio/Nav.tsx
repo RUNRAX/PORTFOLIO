@@ -55,7 +55,7 @@ export function Nav() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
     >
-      <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-foreground/5 backdrop-blur-3xl backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3)]">
+      <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-foreground/5 backdrop-blur-3xl backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3)]">
         
         {/* MAGNIFYING GLASS DOM HACK */}
         <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none z-[-1]">
@@ -72,10 +72,10 @@ export function Nav() {
           </div>
 
           {/* 2. Top Edge Total Internal Reflection */}
-          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 45%)', maskImage: 'linear-gradient(to bottom, black 0%, transparent 45%)' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 60%)', maskImage: 'linear-gradient(to bottom, black 0%, transparent 60%)' }}>
             <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
               {/* Mathematically flip incoming elements above the nav onto the inside top edge */}
-              <div className="w-full h-full origin-[50%_24px] scale-y-[-2.4] scale-x-[2.4] opacity-100 blur-[8px] saturate-[300%]">
+              <div className="w-full h-full origin-[50%_24px] scale-y-[-3.2] scale-x-[3.2] opacity-100 blur-[12px] saturate-[500%]">
                 <motion.div style={{ y: yOffset }}>
                   <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
                 </motion.div>
@@ -84,10 +84,10 @@ export function Nav() {
           </div>
 
           {/* 3. Bottom Edge Total Internal Reflection */}
-          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 45%)', maskImage: 'linear-gradient(to top, black 0%, transparent 45%)' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 60%)', maskImage: 'linear-gradient(to top, black 0%, transparent 60%)' }}>
             <div className="absolute w-[100vw] h-[100vh]" style={{ top: '-24px', left: '50%', transform: 'translateX(-50%)' }}>
               {/* Mathematically flip incoming elements below the nav onto the inside bottom edge */}
-              <div className="w-full h-full origin-[50%_68px] scale-y-[-2.4] scale-x-[2.4] opacity-100 blur-[8px] saturate-[300%]">
+              <div className="w-full h-full origin-[50%_68px] scale-y-[-3.2] scale-x-[3.2] opacity-100 blur-[12px] saturate-[500%]">
                 <motion.div style={{ y: yOffset }}>
                   <div dangerouslySetInnerHTML={{ __html: clonedContent }} />
                 </motion.div>
