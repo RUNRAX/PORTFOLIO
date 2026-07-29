@@ -25,7 +25,7 @@ function ProjectDetail() {
         <div className="w-full max-w-4xl">
           <Link
             to="/"
-            className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground mb-8 transition-transform hover:-translate-x-1"
+            className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground mb-8 transition-all duration-500 ease-out hover:-translate-x-2"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
@@ -84,7 +84,7 @@ function ProjectDetail() {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="liquid-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-foreground/10"
+                className="liquid-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground transition-all duration-500 ease-out hover:bg-foreground/10 hover:scale-105"
               >
                 Visit Site
                 <ExternalLink className="h-4 w-4" />
