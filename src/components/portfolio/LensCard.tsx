@@ -21,10 +21,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             }
           : undefined
       }
-      style={{
-        willChange: "transform",
-        backfaceVisibility: "hidden",
-      }}
       className={cn("liquid-glass p-6 rounded-3xl relative overflow-hidden group", className)}
       {...rest}
     >

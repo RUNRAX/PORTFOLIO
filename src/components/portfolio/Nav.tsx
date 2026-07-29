@@ -27,7 +27,6 @@ export function Nav() {
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      style={{ willChange: "transform", backfaceVisibility: "hidden" }}
       className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
     >
       <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-foreground/5 backdrop-blur-3xl backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3)]">
