@@ -12,7 +12,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const [clonedHtml, setClonedHtml] = useState<string>("");
   const [rect, setRect] = useState({ top: 0, left: 0 });
   const { scrollY } = useScroll();
-
+  useEffect(() => {
     let rafId: number;
     const checkBg = () => {
       const bgElement = document.getElementById("lens-background");
