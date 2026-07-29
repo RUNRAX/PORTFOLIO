@@ -38,7 +38,7 @@ function Index() {
     <main className="relative min-h-dvh text-foreground">
       <LiquidBackground />
       <Nav />
-      <div id="magnify-content" className="relative z-10">
+      <div id="magnify-content" className="relative">
         <Hero />
         <TechArsenal />
         <Experience />

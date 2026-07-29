@@ -21,7 +21,7 @@ function ProjectDetail() {
     <main className="relative min-h-dvh text-foreground">
       <LiquidBackground />
       <Nav />
-      <div id="magnify-content" className="relative z-10 min-h-dvh pt-32 pb-24 px-6 flex flex-col items-center">
+      <div id="magnify-content" className="relative min-h-dvh pt-32 pb-24 px-6 flex flex-col items-center">
         <div className="w-full max-w-4xl">
           <Link
             to="/"
