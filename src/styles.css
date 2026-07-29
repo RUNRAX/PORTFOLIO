@@ -159,9 +159,8 @@ html, body {
 
 @utility liquid-glass {
   background-color: color-mix(in srgb, var(--color-foreground) 5%, transparent);
-  backdrop-filter: blur(24px) saturate(250%) contrast(125%);
-  -webkit-backdrop-filter: blur(24px) saturate(250%) contrast(125%);
-  transform: translateZ(0);
+  backdrop-filter: blur(12px) saturate(250%) contrast(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(250%) contrast(125%);
   border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
   border-radius: 1.25rem;
   box-shadow:
@@ -177,9 +176,8 @@ html, body {
 
 @utility liquid-glass-light {
   background-color: color-mix(in srgb, var(--color-foreground) 3%, transparent);
-  backdrop-filter: blur(32px) saturate(150%);
-  -webkit-backdrop-filter: blur(32px) saturate(150%);
-  transform: translateZ(0);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid color-mix(in srgb, var(--color-foreground) 5%, transparent);
   border-radius: 1.25rem;
 }@utility text-shadow-soft {
