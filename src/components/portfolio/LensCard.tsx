@@ -38,8 +38,10 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
         }}
       />
       
-      <div className="relative z-10">
-        <div className="pointer-events-none absolute inset-0 -m-6 bg-foreground/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {/* Full-card hover highlight */}
+      <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-foreground/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+
+      <div className="relative z-20 h-full w-full">
         {children}
       </div>
     </motion.div>
