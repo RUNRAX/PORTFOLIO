@@ -4,11 +4,11 @@ import Lenis from "lenis";
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.04, // Very heavy, smooth friction
+      lerp: 0.08, // Increased from 0.04 to prevent feeling 'stuck'
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 1.2,
       touchMultiplier: 2,
     });
 

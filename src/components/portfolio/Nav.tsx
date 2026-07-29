@@ -29,17 +29,17 @@ export function Nav() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
     >
-      <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-foreground/5 backdrop-blur-3xl backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3)]">
+      <div className="relative flex items-center gap-1 rounded-full px-2 py-1.5 bg-foreground/10 backdrop-blur-md backdrop-saturate-[200%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-4px_12px_rgba(255,255,255,0.3)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6),inset_0_2px_4px_rgba(255,255,255,0.25),inset_0_-4px_12px_rgba(0,0,0,0.8)]">
         
         {/* SPHERICAL REFRACTION LIGHTING ILLUSION */}
-        <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(200,200,200,0.4),inset_0_0_20px_rgba(255,255,255,0.5)] dark:bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)] dark:shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] pointer-events-none rounded-full"></div>
+        <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(200,200,200,0.5),inset_0_0_12px_rgba(255,255,255,0.6)] dark:bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] dark:shadow-[inset_0_0_16px_rgba(0,0,0,0.9)] pointer-events-none rounded-full"></div>
 
         {/* HIGH EDGE REFRACTION / SPHERICAL PRISM DISTORTION */}
         <div 
-          className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-3xl backdrop-saturate-[400%] shadow-[inset_4px_0_12px_rgba(255,0,0,0.15),inset_-4px_0_12px_rgba(0,255,255,0.15)]"
+          className="absolute inset-0 rounded-full pointer-events-none backdrop-blur-lg backdrop-saturate-[300%] shadow-[inset_2px_0_8px_rgba(255,0,0,0.1),inset_-2px_0_8px_rgba(0,255,255,0.1)]"
           style={{
-            WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 55%, black 100%)',
-            maskImage: 'radial-gradient(ellipse at center, transparent 55%, black 100%)'
+            WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 65%, black 100%)',
+            maskImage: 'radial-gradient(ellipse at center, transparent 65%, black 100%)'
           }}
         ></div>
 
