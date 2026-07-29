@@ -78,7 +78,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               y: scrollY,
               transformOrigin: `${rect.left + 150}px ${rect.top + 150}px`, // approximate center
               scale: 2.0, // Magnification scale
-              filter: "blur(2px) saturate(140%) contrast(110%)",
+              filter: "blur(24px) saturate(200%) contrast(120%)",
             }}
             dangerouslySetInnerHTML={{ __html: clonedHtml }}
           />

@@ -13,7 +13,7 @@ export function LiquidBackground() {
           <img
             src={bgF1}
             alt="F1 Silhouette"
-            className="h-full w-full object-cover opacity-80 brightness-150 contrast-125"
+            className="h-full w-full object-cover object-center"
           />
         </div>
 
