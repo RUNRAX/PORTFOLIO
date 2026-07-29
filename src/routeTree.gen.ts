@@ -10,33 +10,76 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CertificationsCertIdRouteImport } from './routes/certifications.$certId'
+import { Route as ExperienceExperienceIdRouteImport } from './routes/experience.$experienceId'
+import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationsCertIdRoute = CertificationsCertIdRouteImport.update({
+  id: '/certifications/$certId',
+  path: '/certifications/$certId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceExperienceIdRoute = ExperienceExperienceIdRouteImport.update({
+  id: '/experience/$experienceId',
+  path: '/experience/$experienceId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/certifications/$certId': typeof CertificationsCertIdRoute
+  '/experience/$experienceId': typeof ExperienceExperienceIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/certifications/$certId': typeof CertificationsCertIdRoute
+  '/experience/$experienceId': typeof ExperienceExperienceIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/certifications/$certId': typeof CertificationsCertIdRoute
+  '/experience/$experienceId': typeof ExperienceExperienceIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/certifications/$certId'
+    | '/experience/$experienceId'
+    | '/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/certifications/$certId'
+    | '/experience/$experienceId'
+    | '/projects/$projectId'
+  id:
+    | '__root__'
+    | '/'
+    | '/certifications/$certId'
+    | '/experience/$experienceId'
+    | '/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CertificationsCertIdRoute: typeof CertificationsCertIdRoute
+  ExperienceExperienceIdRoute: typeof ExperienceExperienceIdRoute
+  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +91,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certifications/$certId': {
+      id: '/certifications/$certId'
+      path: '/certifications/$certId'
+      fullPath: '/certifications/$certId'
+      preLoaderRoute: typeof CertificationsCertIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience/$experienceId': {
+      id: '/experience/$experienceId'
+      path: '/experience/$experienceId'
+      fullPath: '/experience/$experienceId'
+      preLoaderRoute: typeof ExperienceExperienceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$projectId': {
+      id: '/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof ProjectsProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CertificationsCertIdRoute: CertificationsCertIdRoute,
+  ExperienceExperienceIdRoute: ExperienceExperienceIdRoute,
+  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

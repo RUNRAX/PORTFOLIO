@@ -18,7 +18,8 @@ export function LiquidBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background"
     >
-      {/* Flame photo — rotated to landscape orientation, covers viewport */}
+      <div id="lens-background" className="absolute inset-0">
+        {/* Flame photo — rotated to landscape orientation, covers viewport */}
       <div className="absolute inset-0">
         <img
           src={bgFlame.url}
@@ -147,6 +148,7 @@ export function LiquidBackground() {
           background: "radial-gradient(ellipse at center, transparent 50%, color-mix(in srgb, var(--color-background) 85%, transparent) 100%)",
         }}
       />
+      </div>
     </div>
   );
 }

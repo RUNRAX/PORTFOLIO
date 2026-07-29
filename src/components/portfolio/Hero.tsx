@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Github, Linkedin } from "lucide-react";
+import { bio } from "@/lib/data";
 
 export function Hero() {
   return (
@@ -11,7 +12,7 @@ export function Hero() {
         className="liquid-glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs tracking-wide text-foreground/80"
       >
         <Sparkles className="h-3.5 w-3.5" />
-        Full-Stack Developer · Security Enthusiast
+        {bio.title}
       </motion.div>
 
       <motion.h1
@@ -20,7 +21,7 @@ export function Hero() {
         transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
         className="bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-6xl font-semibold leading-[0.95] tracking-tight text-transparent md:text-8xl"
       >
-        Rakshit Awati
+        {bio.name}
       </motion.h1>
 
       <motion.p
@@ -29,7 +30,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="mt-6 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg"
       >
-        Building high-performance web applications and secure systems.
+        {bio.summary}
       </motion.p>
 
       <motion.div
@@ -48,12 +49,26 @@ export function Hero() {
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </motion.a>
         <motion.a
-          href="#about"
+          href={bio.github}
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass-light inline-flex items-center rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
+          className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
         >
-          About Me
+          <Github className="h-4 w-4" />
+          GitHub
+        </motion.a>
+        <motion.a
+          href={bio.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
+        >
+          <Linkedin className="h-4 w-4" />
+          LinkedIn
         </motion.a>
       </motion.div>
     </section>

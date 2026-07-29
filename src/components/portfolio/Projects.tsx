@@ -1,33 +1,8 @@
 import { motion } from "framer-motion";
-import { GlassCard } from "./GlassCard";
-import { ExternalLink, Sparkles, Building2, Leaf } from "lucide-react";
-
-const projects = [
-  {
-    icon: Sparkles,
-    title: "Synaptic Cinema",
-    tag: "Research",
-    description:
-      "Emotion-driven screening research. Accepted for presentation at ICMLDE-2025 and ICAIES-2025.",
-    meta: ["ML", "Affective Computing", "Publication"],
-  },
-  {
-    icon: Building2,
-    title: "TCS iON Manpower Portal",
-    tag: "Production",
-    description:
-      "Production-grade operational tracking system engineered with Next.js 14 and Supabase.",
-    meta: ["Next.js 14", "Supabase", "Enterprise"],
-  },
-  {
-    icon: Leaf,
-    title: "Grama-Sanjeevini",
-    tag: "In Development",
-    description:
-      "Rural pharmacy network application improving medicine accessibility in remote areas.",
-    meta: ["React", "Node.js", "Healthcare"],
-  },
-];
+import { LensCard } from "./LensCard";
+import { ExternalLink, Sparkles, Building2, Leaf, ArrowRight } from "lucide-react";
+import { projects } from "@/lib/data";
+import { Link } from "@tanstack/react-router";
 
 export function Projects() {
   return (
@@ -47,7 +22,7 @@ export function Projects() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => {
-            const Icon = p.icon;
+            const Icon = p.id === "synaptic-cinema" ? Sparkles : p.id === "tcs-ion" ? Building2 : Leaf;
             return (
               <motion.div
                 key={p.title}
@@ -57,31 +32,35 @@ export function Projects() {
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 style={{ transform: i === 1 ? "translateY(24px)" : undefined }}
               >
-                <GlassCard className="flex h-full min-h-[280px] flex-col">
-                  <div className="mb-6 flex items-center justify-between">
-                    <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
-                      <Icon className="h-5 w-5 text-foreground" />
+                <Link to={"/projects/" + p.id} className="block h-full">
+                  <LensCard className="flex h-full min-h-[280px] flex-col group cursor-pointer">
+                    <div className="mb-6 flex items-center justify-between">
+                      <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
+                        <Icon className="h-5 w-5 text-foreground" />
+                      </div>
+                      <span className="liquid-glass-light rounded-full px-2.5 py-1 text-[10px] uppercase tracking-widest text-foreground/80">
+                        {p.role}
+                      </span>
                     </div>
-                    <span className="liquid-glass-light rounded-full px-2.5 py-1 text-[10px] uppercase tracking-widest text-foreground/80">
-                      {p.tag}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/70">{p.description}</p>
-                  <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
-                    <div className="flex flex-wrap gap-1.5">
-                      {p.meta.map((m) => (
-                        <span
-                          key={m}
-                          className="liquid-glass-light rounded-full px-2 py-0.5 text-[10px] text-foreground/80"
-                        >
-                          {m}
-                        </span>
-                      ))}
+                    <h3 className="text-xl font-semibold text-foreground">{p.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/70 line-clamp-3">
+                      {p.problemStatement}
+                    </p>
+                    <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+                      <div className="flex flex-wrap gap-1.5">
+                        {p.technologies.slice(0, 2).map((m) => (
+                          <span
+                            key={m}
+                            className="liquid-glass-light rounded-full px-2 py-0.5 text-[10px] text-foreground/80"
+                          >
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-foreground/40 transition-transform group-hover:translate-x-1 group-hover:text-foreground" />
                     </div>
-                    <ExternalLink className="h-4 w-4 text-foreground/40" />
-                  </div>
-                </GlassCard>
+                  </LensCard>
+                </Link>
               </motion.div>
             );
           })}

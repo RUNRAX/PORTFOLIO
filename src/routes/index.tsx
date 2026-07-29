@@ -4,7 +4,8 @@ import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { TechArsenal } from "@/components/portfolio/TechArsenal";
 import { Projects } from "@/components/portfolio/Projects";
-import { About } from "@/components/portfolio/About";
+import { Experience } from "@/components/portfolio/Experience";
+import { Education } from "@/components/portfolio/Education";
 import { Footer } from "@/components/portfolio/Footer";
 
 export const Route = createFileRoute("/")({
@@ -34,14 +35,15 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative min-h-dvh text-white">
+    <main className="relative min-h-dvh text-foreground">
       <LiquidBackground />
       <Nav />
       <div id="magnify-content">
         <Hero />
         <TechArsenal />
+        <Experience />
         <Projects />
-        <About />
+        <Education />
         <Footer />
       </div>
     </main>
