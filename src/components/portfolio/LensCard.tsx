@@ -13,12 +13,16 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const [rect, setRect] = useState({ top: 0, left: 0 });
   const { scrollY } = useScroll();
 
-  useEffect(() => {
-    // Clone the background safely
-    const bgElement = document.getElementById("lens-background");
-    if (bgElement) {
-      setClonedHtml(bgElement.innerHTML);
-    }
+    let rafId: number;
+    const checkBg = () => {
+      const bgElement = document.getElementById("lens-background");
+      if (bgElement && bgElement.innerHTML) {
+        setClonedHtml(bgElement.innerHTML);
+      } else {
+        rafId = requestAnimationFrame(checkBg);
+      }
+    };
+    checkBg();
 
     const updateRect = () => {
       if (cardRef.current) {
@@ -41,6 +45,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
     if (cardRef.current) observer.observe(document.body);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", updateRect);
       observer.disconnect();
     };
