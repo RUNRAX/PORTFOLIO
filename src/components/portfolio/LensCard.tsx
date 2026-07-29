@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
@@ -12,6 +12,17 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const [clonedHtml, setClonedHtml] = useState<string>("");
   const [rect, setRect] = useState({ top: 0, left: 0 });
   const { scrollY } = useScroll();
+
+  const yOffset = useTransform(scrollY, (y) => -rect.top + y);
+  const transformOriginY = useTransform(scrollY, (y) => rect.top - y + 150);
+  const centerOrigin = useMotionTemplate`${rect.left + 150}px ${transformOriginY}px`;
+  
+  const topEdgeOriginY = useTransform(scrollY, (y) => rect.top - y);
+  const topEdgeOrigin = useMotionTemplate`${rect.left + 150}px ${topEdgeOriginY}px`;
+
+  const bottomEdgeOriginY = useTransform(scrollY, (y) => rect.top - y + 300);
+  const bottomEdgeOrigin = useMotionTemplate`${rect.left + 150}px ${bottomEdgeOriginY}px`;
+
   useEffect(() => {
     let rafId: number;
     const checkBg = () => {
@@ -26,7 +37,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
 
     const updateRect = () => {
       if (cardRef.current) {
-        // Get absolute offset relative to the document
         const element = cardRef.current;
         const box = element.getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -40,7 +50,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
 
     updateRect();
     window.addEventListener("resize", updateRect);
-    // Use a ResizeObserver in case layout changes
     const observer = new ResizeObserver(updateRect);
     if (cardRef.current) observer.observe(document.body);
 
@@ -71,12 +80,12 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
           <motion.div
             className="absolute pointer-events-none"
             style={{
-              top: -rect.top,
+              top: 0,
               left: -rect.left,
               width: "100vw",
               height: "100vh",
-              y: scrollY,
-              transformOrigin: `${rect.left + 150}px ${rect.top + 150}px`, // approximate center
+              y: yOffset,
+              transformOrigin: centerOrigin,
               scale: 2.0, // Magnification scale
               filter: "blur(24px) saturate(200%) contrast(120%)",
             }}
@@ -94,12 +103,12 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
           <motion.div
             className="absolute pointer-events-none"
             style={{
-              top: -rect.top,
+              top: 0,
               left: -rect.left,
               width: "100vw",
               height: "100vh",
-              y: scrollY,
-              transformOrigin: `${rect.left + 150}px ${rect.top}px`,
+              y: yOffset,
+              transformOrigin: topEdgeOrigin,
               scaleY: -3.2,
               scaleX: 2.2,
               filter: "blur(4px) saturate(180%) contrast(120%) brightness(1.2)",
@@ -118,12 +127,12 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
           <motion.div
             className="absolute pointer-events-none"
             style={{
-              top: -rect.top,
+              top: 0,
               left: -rect.left,
               width: "100vw",
               height: "100vh",
-              y: scrollY,
-              transformOrigin: `${rect.left + 150}px ${rect.top + 300}px`,
+              y: yOffset,
+              transformOrigin: bottomEdgeOrigin,
               scaleY: -3.2,
               scaleX: 2.2,
               filter: "blur(4px) saturate(180%) contrast(120%) brightness(1.2)",
