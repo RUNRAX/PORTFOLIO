@@ -88,6 +88,8 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               transformOrigin: centerOrigin,
               scale: 2.0, // Magnification scale
               filter: "blur(24px) saturate(200%) contrast(120%)",
+              willChange: "transform, filter",
+              backfaceVisibility: "hidden",
             }}
             dangerouslySetInnerHTML={{ __html: clonedHtml }}
           />
@@ -112,6 +114,8 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               scaleY: -3.2,
               scaleX: 2.2,
               filter: "blur(4px) saturate(180%) contrast(120%) brightness(1.2)",
+              willChange: "transform, filter",
+              backfaceVisibility: "hidden",
             }}
             dangerouslySetInnerHTML={{ __html: clonedHtml }}
           />
@@ -136,6 +140,8 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               scaleY: -3.2,
               scaleX: 2.2,
               filter: "blur(4px) saturate(180%) contrast(120%) brightness(1.2)",
+              willChange: "transform, filter",
+              backfaceVisibility: "hidden",
             }}
             dangerouslySetInnerHTML={{ __html: clonedHtml }}
           />
