@@ -11,16 +11,10 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const cardRef = useRef<HTMLDivElement>(null);
   const [clonedHtml, setClonedHtml] = useState<string>("");
   const [vpSize, setVpSize] = useState({ width: "100vw", height: "100vh" });
-  const cloneX = useMotionValue(0);
-  const cloneY = useMotionValue(0);
+  const [rect, setRect] = useState({ top: 0, left: 0 });
+  const { scrollY } = useScroll();
 
-  useAnimationFrame(() => {
-    if (cardRef.current) {
-      const box = cardRef.current.getBoundingClientRect();
-      cloneX.set(-box.left);
-      cloneY.set(-box.top);
-    }
-  });
+  const yOffset = useTransform(scrollY, (y) => -rect.top + y);
 
   useEffect(() => {
     let rafId: number;
@@ -34,18 +28,33 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
     };
     checkBg();
 
-    const updateSize = () => {
+    const updateSizeAndRect = () => {
       setVpSize({
         width: `${document.documentElement.clientWidth}px`,
         height: `${window.innerHeight}px`,
       });
+      if (cardRef.current) {
+        const box = cardRef.current.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        setRect({
+          top: box.top + scrollTop,
+          left: box.left + scrollLeft,
+        });
+      }
     };
-    updateSize();
-    window.addEventListener("resize", updateSize);
+    
+    updateSizeAndRect();
+    window.addEventListener("resize", updateSizeAndRect);
+    
+    // Framer motion entrance animations cause the card to start at y: 24.
+    // Wait for the animation to finish (usually 0.6s) before capturing the final absolute position.
+    const timeoutId = setTimeout(updateSizeAndRect, 800);
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", updateSize);
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", updateSizeAndRect);
     };
   }, []);
 
@@ -73,11 +82,11 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               left: 0,
               width: vpSize.width,
               height: vpSize.height,
-              x: cloneX,
-              y: cloneY,
+              x: -rect.left,
+              y: yOffset,
               transformOrigin: "50% 50%",
-              scale: 2.2, // Extreme Magnification scale
-              filter: "blur(48px) saturate(250%) contrast(120%) brightness(1.15)",
+              scale: 1.8, // Good visible magnification
+              filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
               willChange: "transform, filter",
               backfaceVisibility: "hidden",
             }}
