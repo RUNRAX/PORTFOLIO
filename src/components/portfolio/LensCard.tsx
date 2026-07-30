@@ -10,12 +10,17 @@ type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
 export function LensCard({ children, className, interactive = true, ...rest }: LensCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [clonedHtml, setClonedHtml] = useState<string>("");
-  const [rect, setRect] = useState({ top: 0, left: 0 });
-  const { scrollY } = useScroll();
+  const [vpSize, setVpSize] = useState({ width: "100vw", height: "100vh" });
+  const cloneX = import("framer-motion").useMotionValue(0);
+  const cloneY = import("framer-motion").useMotionValue(0);
 
-  const yOffset = useTransform(scrollY, (y) => -rect.top + y);
-  const transformOriginY = useTransform(scrollY, (y) => rect.top - y + 150);
-  const centerOrigin = useMotionTemplate`${rect.left + 150}px ${transformOriginY}px`;
+  import("framer-motion").useAnimationFrame(() => {
+    if (cardRef.current) {
+      const box = cardRef.current.getBoundingClientRect();
+      cloneX.set(-box.left);
+      cloneY.set(-box.top);
+    }
+  });
 
   useEffect(() => {
     let rafId: number;
@@ -29,28 +34,18 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
     };
     checkBg();
 
-    const updateRect = () => {
-      if (cardRef.current) {
-        const element = cardRef.current;
-        const box = element.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        setRect({
-          top: box.top + scrollTop,
-          left: box.left + scrollLeft,
-        });
-      }
+    const updateSize = () => {
+      setVpSize({
+        width: `${document.documentElement.clientWidth}px`,
+        height: `${window.innerHeight}px`,
+      });
     };
-
-    updateRect();
-    window.addEventListener("resize", updateRect);
-    const observer = new ResizeObserver(updateRect);
-    if (cardRef.current) observer.observe(document.body);
+    updateSize();
+    window.addEventListener("resize", updateSize);
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", updateRect);
-      observer.disconnect();
+      window.removeEventListener("resize", updateSize);
     };
   }, []);
 
@@ -75,11 +70,12 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             className="absolute pointer-events-none"
             style={{
               top: 0,
-              left: -rect.left,
-              width: "100vw",
-              height: "100vh",
-              y: yOffset,
-              transformOrigin: "50vw 50vh",
+              left: 0,
+              width: vpSize.width,
+              height: vpSize.height,
+              x: cloneX,
+              y: cloneY,
+              transformOrigin: "50% 50%",
               scale: 1.5, // Magnification scale
               filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
               willChange: "transform, filter",
