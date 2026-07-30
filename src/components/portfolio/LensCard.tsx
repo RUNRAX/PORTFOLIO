@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useAnimationFrame } from "framer-motion";
 import { cn } from "@/lib/utils";
+import bgF1 from "@/assets/bg-f1.png";
 
 type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
   children: React.ReactNode;
@@ -9,7 +10,6 @@ type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
 
 export function LensCard({ children, className, interactive = true, ...rest }: LensCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [clonedHtml, setClonedHtml] = useState<string>("");
   const [vpSize, setVpSize] = useState({ width: "100vw", height: "100vh" });
   const [rect, setRect] = useState({ top: 0, left: 0 });
   const { scrollY } = useScroll();
@@ -19,15 +19,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
 
   useEffect(() => {
     let rafId: number;
-    const checkBg = () => {
-      const bgElement = document.getElementById("lens-background");
-      if (bgElement && bgElement.innerHTML) {
-        setClonedHtml(bgElement.innerHTML);
-      } else {
-        rafId = requestAnimationFrame(checkBg);
-      }
-    };
-    checkBg();
 
     const updateSizeAndRect = () => {
       setVpSize({
@@ -73,26 +64,31 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
       className={cn("liquid-glass relative overflow-hidden group", className)}
       {...rest}
     >
-      {/* MAGNIFIED BACKGROUND CLONE */}
-      {clonedHtml && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit] z-[-1] opacity-70">
-          <motion.div
-            className="absolute pointer-events-none"
-            style={{
-              top: 0,
-              left: -rect.left,
-              width: vpSize.width,
-              height: vpSize.height,
-              transformOrigin: "50vw 50vh",
-              transform: transformTemplate,
-              filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
-              willChange: "transform, filter",
-              backfaceVisibility: "hidden",
-            }}
-            dangerouslySetInnerHTML={{ __html: clonedHtml }}
+      {/* MAGNIFIED BACKGROUND */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit] z-[-1] opacity-70">
+        <motion.div
+          className="absolute pointer-events-none flex items-center justify-center bg-black"
+          style={{
+            top: 0,
+            left: -rect.left,
+            width: vpSize.width,
+            height: vpSize.height,
+            transformOrigin: "50vw 50vh",
+            transform: transformTemplate,
+            filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
+            willChange: "transform, filter",
+            backfaceVisibility: "hidden",
+          }}
+        >
+          <img
+            src={bgF1}
+            className="h-full w-full object-cover opacity-80 mix-blend-screen"
+            alt=""
           />
-        </div>
-      )}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/50" />
+        </motion.div>
+      </div>
 
       {/* Specular highlight sweep */}
       <div
