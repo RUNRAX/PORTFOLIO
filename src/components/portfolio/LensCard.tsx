@@ -79,9 +79,9 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
               width: "100vw",
               height: "100vh",
               y: yOffset,
-              transformOrigin: centerOrigin,
+              transformOrigin: "50vw 50vh",
               scale: 1.5, // Magnification scale
-              filter: "blur(12px) saturate(180%) contrast(110%) brightness(1.1)", // "A bit blur with magnifying effect"
+              filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
               willChange: "transform, filter",
               backfaceVisibility: "hidden",
             }}
