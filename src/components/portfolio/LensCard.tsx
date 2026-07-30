@@ -15,7 +15,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const { scrollY } = useScroll();
 
   const yOffset = useTransform(scrollY, (y) => -rect.top + y);
-  const transformTemplate = useMotionTemplate`translateY(${yOffset}px) scale(1.8)`;
 
   useEffect(() => {
     let rafId: number;
@@ -65,7 +64,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
       {...rest}
     >
       {/* MAGNIFIED BACKGROUND */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit] z-[-1] opacity-70">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit] z-0 opacity-70">
         <motion.div
           className="absolute pointer-events-none flex items-center justify-center bg-black"
           style={{
@@ -74,7 +73,8 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             width: vpSize.width,
             height: vpSize.height,
             transformOrigin: "50vw 50vh",
-            transform: transformTemplate,
+            y: yOffset,
+            scale: 1.8,
             filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
             willChange: "transform, filter",
             backfaceVisibility: "hidden",
