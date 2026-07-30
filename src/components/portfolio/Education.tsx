@@ -16,65 +16,63 @@ export function Education() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <motion.div
+          <LensCard
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
+            className="p-6 rounded-3xl flex h-full flex-col"
           >
-            <LensCard className="p-6 rounded-3xl flex h-full flex-col">
-              <div className="flex items-center gap-3">
-                <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
-                  <GraduationCap className="h-5 w-5 text-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Degree</h3>
+            <div className="flex items-center gap-3">
+              <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
+                <GraduationCap className="h-5 w-5 text-foreground" />
               </div>
-              <div className="mt-6 space-y-2">
-                <p className="text-base font-medium text-foreground">{education.degree}</p>
-                <p className="text-sm text-foreground/70">{education.school}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="liquid-glass-light rounded-full px-3 py-1 text-xs text-foreground/80">
-                    CGPA: {education.cgpa}
-                  </span>
-                  <span className="text-sm text-foreground/50">{education.date}</span>
-                </div>
+              <h3 className="text-xl font-semibold text-foreground">Degree</h3>
+            </div>
+            <div className="mt-6 space-y-2">
+              <p className="text-base font-medium text-foreground">{education.degree}</p>
+              <p className="text-sm text-foreground/70">{education.school}</p>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="liquid-glass-light rounded-full px-3 py-1 text-xs text-foreground/80">
+                  CGPA: {education.cgpa}
+                </span>
+                <span className="text-sm text-foreground/50">{education.date}</span>
               </div>
-            </LensCard>
-          </motion.div>
+            </div>
+          </LensCard>
 
-          <motion.div
+          <LensCard
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-6 rounded-3xl flex h-full flex-col"
           >
-            <LensCard className="p-6 rounded-3xl flex h-full flex-col">
-              <div className="flex items-center gap-3">
-                <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
-                  <ShieldCheck className="h-5 w-5 text-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Certifications</h3>
+            <div className="flex items-center gap-3">
+              <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
+                <ShieldCheck className="h-5 w-5 text-foreground" />
               </div>
-              <ul className="mt-6 space-y-3">
-                {certifications.map((cert) => (
-                  <li key={cert.id}>
-                    <Link
-                      to={"/certifications/" + cert.id}
-                      className="group flex items-center justify-between rounded-xl p-3 transition-colors hover:bg-foreground/5"
-                    >
-                      <div>
-                        <p className="text-sm font-medium text-foreground group-hover:text-primary">
-                          {cert.title}
-                        </p>
-                        <p className="text-xs text-foreground/60">{cert.issuer} • {cert.year}</p>
-                      </div>
-                      <ArrowRight className="h-4 w-4 text-foreground/30 transition-transform group-hover:translate-x-1 group-hover:text-foreground" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </LensCard>
-          </motion.div>
+              <h3 className="text-xl font-semibold text-foreground">Certifications</h3>
+            </div>
+            <ul className="mt-6 space-y-3">
+              {certifications.map((cert) => (
+                <li key={cert.id}>
+                  <Link
+                    to={"/certifications/" + cert.id}
+                    className="group flex items-center justify-between rounded-xl p-3 transition-colors hover:bg-foreground/5"
+                  >
+                    <div>
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary">
+                        {cert.title}
+                      </p>
+                      <p className="text-xs text-foreground/60">{cert.issuer} • {cert.year}</p>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-foreground/30 transition-transform group-hover:translate-x-1 group-hover:text-foreground" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </LensCard>
         </div>
       </div>
     </section>

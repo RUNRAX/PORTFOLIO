@@ -1,7 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useAnimationFrame } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import bgF1 from "@/assets/bg-f1.png";
 
 type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
   children: React.ReactNode;
@@ -9,49 +7,8 @@ type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
 };
 
 export function LensCard({ children, className, interactive = true, ...rest }: LensCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [vpSize, setVpSize] = useState({ width: "100vw", height: "100vh" });
-  const [rect, setRect] = useState({ top: 0, left: 0 });
-  const { scrollY } = useScroll();
-
-  const yOffset = useTransform(scrollY, (y) => -rect.top + y);
-
-  useEffect(() => {
-    let rafId: number;
-
-    const updateSizeAndRect = () => {
-      setVpSize({
-        width: `${document.documentElement.clientWidth}px`,
-        height: `${window.innerHeight}px`,
-      });
-      if (cardRef.current) {
-        const box = cardRef.current.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        setRect({
-          top: box.top + scrollTop,
-          left: box.left + scrollLeft,
-        });
-      }
-    };
-    
-    updateSizeAndRect();
-    window.addEventListener("resize", updateSizeAndRect);
-    
-    // Framer motion entrance animations cause the card to start at y: 24.
-    // Wait for the animation to finish (usually 0.6s) before capturing the final absolute position.
-    const timeoutId = setTimeout(updateSizeAndRect, 800);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      clearTimeout(timeoutId);
-      window.removeEventListener("resize", updateSizeAndRect);
-    };
-  }, []);
-
   return (
     <motion.div
-      ref={cardRef}
       whileHover={
         interactive
           ? {
@@ -63,33 +20,6 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
       className={cn("liquid-glass relative overflow-hidden group", className)}
       {...rest}
     >
-      {/* MAGNIFIED BACKGROUND */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit] z-0 opacity-70">
-        <motion.div
-          className="absolute pointer-events-none flex items-center justify-center bg-black"
-          style={{
-            top: 0,
-            left: -rect.left,
-            width: vpSize.width,
-            height: vpSize.height,
-            transformOrigin: "50vw 50vh",
-            y: yOffset,
-            scale: 1.8,
-            filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
-            willChange: "transform, filter",
-            backfaceVisibility: "hidden",
-          }}
-        >
-          <img
-            src={bgF1}
-            className="h-full w-full object-cover opacity-80 mix-blend-screen"
-            alt=""
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/50" />
-        </motion.div>
-      </div>
-
       {/* Specular highlight sweep */}
       <div
         aria-hidden
