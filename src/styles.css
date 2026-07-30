@@ -158,7 +158,7 @@ html, body {
 }
 
 @utility liquid-glass {
-  @apply bg-foreground/5 backdrop-blur-md backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_0_12px_rgba(255,255,255,0.15),inset_0_0_1px_rgba(255,255,255,0.3)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3),inset_0_0_12px_rgba(255,255,255,0.08),inset_0_0_1px_rgba(255,255,255,0.2)];
+  @apply bg-foreground/5 backdrop-blur-sm backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_0_12px_rgba(255,255,255,0.15),inset_0_0_1px_rgba(255,255,255,0.3)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3),inset_0_0_12px_rgba(255,255,255,0.08),inset_0_0_1px_rgba(255,255,255,0.2)];
 }
 
 @utility liquid-glass-light {
