@@ -22,7 +22,7 @@ export function Education() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <LensCard className="flex h-full flex-col">
+            <LensCard className="p-6 rounded-3xl flex h-full flex-col">
               <div className="flex items-center gap-3">
                 <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
                   <GraduationCap className="h-5 w-5 text-foreground" />
@@ -48,7 +48,7 @@ export function Education() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <LensCard className="flex h-full flex-col">
+            <LensCard className="p-6 rounded-3xl flex h-full flex-col">
               <div className="flex items-center gap-3">
                 <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
                   <ShieldCheck className="h-5 w-5 text-foreground" />

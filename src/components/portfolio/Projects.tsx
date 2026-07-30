@@ -33,7 +33,7 @@ export function Projects() {
                 style={{ transform: i === 1 ? "translateY(24px)" : undefined }}
               >
                 <Link to={"/projects/" + p.id} className="block h-full">
-                  <LensCard className="flex h-full min-h-[280px] flex-col group cursor-pointer">
+                  <LensCard className="p-6 rounded-3xl flex h-full min-h-[280px] flex-col group cursor-pointer">
                     <div className="mb-6 flex items-center justify-between">
                       <div className="liquid-glass flex h-10 w-10 items-center justify-center rounded-xl">
                         <Icon className="h-5 w-5 text-foreground" />

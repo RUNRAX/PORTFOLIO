@@ -31,7 +31,7 @@ function ExperienceDetail() {
             Back to Home
           </Link>
 
-          <LensCard className="w-full flex flex-col">
+          <LensCard className="p-6 rounded-3xl w-full flex flex-col">
             <div className="mb-8 border-b border-foreground/10 pb-8">
               <span className="liquid-glass-light rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary font-medium mb-4 inline-block">
                 {exp.date}
