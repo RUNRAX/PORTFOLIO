@@ -17,12 +17,9 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             }
           : undefined
       }
-      className={cn("relative group", className)}
+      className={cn("liquid-glass relative group", className)}
       {...rest}
     >
-      {/* Background Glass Layer (NO overflow-hidden to fix Webkit bug) */}
-      <div className="liquid-glass absolute inset-0 rounded-[inherit] pointer-events-none" />
-
       {/* Overflow hidden layer for highlights */}
       <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
         {/* Specular highlight sweep */}
