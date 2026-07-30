@@ -15,6 +15,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const { scrollY } = useScroll();
 
   const yOffset = useTransform(scrollY, (y) => -rect.top + y);
+  const transformTemplate = useMotionTemplate`translateY(${yOffset}px) scale(1.8)`;
 
   useEffect(() => {
     let rafId: number;
@@ -79,13 +80,11 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             className="absolute pointer-events-none"
             style={{
               top: 0,
-              left: 0,
+              left: -rect.left,
               width: vpSize.width,
               height: vpSize.height,
-              x: -rect.left,
-              y: yOffset,
-              transformOrigin: "50% 50%",
-              scale: 1.8, // Good visible magnification
+              transformOrigin: "50vw 50vh",
+              transform: transformTemplate,
               filter: "blur(24px) saturate(200%) contrast(120%) brightness(1.15)",
               willChange: "transform, filter",
               backfaceVisibility: "hidden",
