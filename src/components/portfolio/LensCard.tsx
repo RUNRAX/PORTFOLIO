@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useAnimationFrame } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type LensCardProps = import("framer-motion").HTMLMotionProps<"div"> & {
@@ -11,10 +11,10 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
   const cardRef = useRef<HTMLDivElement>(null);
   const [clonedHtml, setClonedHtml] = useState<string>("");
   const [vpSize, setVpSize] = useState({ width: "100vw", height: "100vh" });
-  const cloneX = import("framer-motion").useMotionValue(0);
-  const cloneY = import("framer-motion").useMotionValue(0);
+  const cloneX = useMotionValue(0);
+  const cloneY = useMotionValue(0);
 
-  import("framer-motion").useAnimationFrame(() => {
+  useAnimationFrame(() => {
     if (cardRef.current) {
       const box = cardRef.current.getBoundingClientRect();
       cloneX.set(-box.left);
