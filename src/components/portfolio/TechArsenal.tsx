@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { LensCard } from "./LensCard";
 
 const stack = [
   { name: "React", glyph: "⚛" },
@@ -16,7 +17,7 @@ export function TechArsenal() {
   return (
     <section className="relative px-6 pb-24">
       <div className="mx-auto flex max-w-4xl justify-center">
-        <div className="liquid-glass flex flex-wrap items-center justify-center gap-2 rounded-full px-4 py-3">
+        <LensCard interactive={false} className="flex flex-wrap items-center justify-center gap-2 rounded-full px-4 py-3">
           {stack.map((t) => (
             <motion.div
               key={t.name}
@@ -28,7 +29,7 @@ export function TechArsenal() {
               <span className="hidden sm:inline">{t.name}</span>
             </motion.div>
           ))}
-        </div>
+        </LensCard>
       </div>
     </section>
   );

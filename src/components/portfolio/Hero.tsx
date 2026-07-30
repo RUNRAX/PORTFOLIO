@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Github, Linkedin } from "lucide-react";
 import { bio } from "@/lib/data";
+import { LensCard } from "./LensCard";
 
 export function Hero() {
   return (
@@ -39,37 +40,33 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.25 }}
         className="mt-10 flex flex-wrap items-center justify-center gap-3"
       >
-        <motion.a
-          href="#work"
+        <LensCard
+          onClick={() => window.location.href = "#work"}
           whileHover={{ scale: 1.04, backgroundColor: "color-mix(in srgb, var(--color-foreground) 12%, transparent)" }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground"
+          className="rounded-full px-6 py-3 inline-flex items-center gap-2 text-sm font-medium text-foreground cursor-pointer"
         >
           Explore Work
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </motion.a>
-        <motion.a
-          href={bio.github}
-          target="_blank"
-          rel="noopener noreferrer"
+        </LensCard>
+        <LensCard
+          onClick={() => window.open(bio.github, "_blank")}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
+          className="liquid-glass-light rounded-full px-6 py-3 inline-flex items-center gap-2 text-sm font-medium text-foreground/85 hover:text-foreground cursor-pointer"
         >
           <Github className="h-4 w-4" />
           GitHub
-        </motion.a>
-        <motion.a
-          href={bio.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
+        </LensCard>
+        <LensCard
+          onClick={() => window.open(bio.linkedin, "_blank")}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass-light inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-foreground/85 hover:text-foreground"
+          className="liquid-glass-light rounded-full px-6 py-3 inline-flex items-center gap-2 text-sm font-medium text-foreground/85 hover:text-foreground cursor-pointer"
         >
           <Linkedin className="h-4 w-4" />
           LinkedIn
-        </motion.a>
+        </LensCard>
       </motion.div>
     </section>
   );

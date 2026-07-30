@@ -65,7 +65,7 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
             }
           : undefined
       }
-      className={cn("liquid-glass p-6 rounded-3xl relative overflow-hidden group", className)}
+      className={cn("liquid-glass relative overflow-hidden group", className)}
       {...rest}
     >
       {/* MAGNIFIED BACKGROUND CLONE */}
