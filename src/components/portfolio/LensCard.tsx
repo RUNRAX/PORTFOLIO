@@ -25,10 +25,10 @@ export function LensCard({ children, className, interactive = true, ...rest }: L
         {/* Specular highlight sweep */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0 opacity-60 animate-glass-sweep"
           style={{
             background:
-              "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.05) 100%)",
+              "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.08) 100%)",
           }}
         />
         

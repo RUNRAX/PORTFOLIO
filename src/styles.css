@@ -158,12 +158,14 @@ html, body {
 }
 
 @utility liquid-glass {
-  @apply bg-foreground/5 backdrop-blur-xl backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3),inset_0_0_24px_rgba(255,255,255,0.03)];
+  @apply bg-foreground/5 backdrop-blur-md backdrop-saturate-[250%] backdrop-contrast-125 border border-foreground/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_0_12px_rgba(255,255,255,0.15),inset_0_0_1px_rgba(255,255,255,0.3)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_2px_rgba(0,0,0,0.3),inset_0_0_12px_rgba(255,255,255,0.08),inset_0_0_1px_rgba(255,255,255,0.2)];
 }
 
 @utility liquid-glass-light {
-  @apply bg-foreground/5 backdrop-blur-xl backdrop-saturate-[150%] border border-foreground/10;
-}@utility text-shadow-soft {
+  @apply bg-foreground/5 backdrop-blur-md backdrop-saturate-[150%] border border-foreground/10;
+}
+
+@utility text-shadow-soft {
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
 }
 
@@ -192,6 +194,11 @@ html, body {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, 24px, 0); }
 }
+@keyframes glass-sweep {
+  0% { transform: translateX(-200%) skewX(-15deg); }
+  50% { transform: translateX(250%) skewX(-15deg); }
+  100% { transform: translateX(250%) skewX(-15deg); }
+}
 
 .animate-blob-a { animation: blob-float-a 22s ease-in-out infinite; }
 .animate-blob-b { animation: blob-float-b 28s ease-in-out infinite; }
@@ -199,3 +206,4 @@ html, body {
 .animate-marquee { animation: marquee-x 30s linear infinite; }
 .animate-drift { animation: drift-y 18s ease-in-out infinite; }
 .animate-drift-slow { animation: drift-y-slow 26s ease-in-out infinite; }
+.animate-glass-sweep { animation: glass-sweep 3s ease-in-out infinite; }
